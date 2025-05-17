@@ -1,0 +1,38 @@
+.model small
+.stack 100h
+.data
+    num db 38                ; Change this number to test other values
+
+    msg_even db 'The number is even$'
+    msg_odd  db 'The number is odd$'
+
+.code
+start:
+    mov ax, @data
+    mov ds, ax
+
+    mov al, num              ; Load the number
+    and al, 1                ; Check least significant bit (LSB)
+    jz even_case             ; If zero, number is even
+
+odd_case:
+    mov dx, offset msg_odd
+    call print_msg
+    jmp exit
+
+even_case:
+    mov dx, offset msg_even
+    call print_msg
+    jmp exit
+
+; ----------- Subroutine to Print Message -----------
+print_msg:
+    mov ah, 9
+    int 21h
+    ret
+
+exit:
+    mov ah, 4Ch
+    int 21h
+
+end start
