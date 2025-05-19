@@ -8,9 +8,9 @@
 start:
     mov ax, @data
     mov ds, ax
-    mov al, num              ; Load the number
-    and al, 1                ; Check least significant bit (LSB)
-    jz even_case             ; If zero, number is even
+    mov al, num              
+    and al, 1                
+    jz even_case             
 odd_case:
     mov dx, offset msg_odd
     call print_msg

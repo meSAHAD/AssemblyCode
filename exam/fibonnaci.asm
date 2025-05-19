@@ -15,7 +15,7 @@ start:
     mov ax, fib2
     call print_number
     call print_space
-    mov cx, 4
+    mov cx, 5
 fib_loop:
     mov ax, fib1
     add ax, fib2
